@@ -16,19 +16,14 @@ index :download_links => false do
     selectable_column
     column "Url", :original
     column "Shorten", :random_id
+    column "Count", :count
     actions
    end
 
    form do |f|
-       f.inputs "Inquiry Detail" do
+       f.inputs "Shorten Url" do
            f.input :original
-            f.input :random_id do |n|
-         
-                link_to(n.random_id,url_path(:id => url.random_id))
-            
-            end
-         
-   
+            f.input :random_id
        end
    
        f.actions
@@ -38,6 +33,7 @@ index :download_links => false do
        attributes_table do
        row :original
        row :random_id
+       row :count
            
        end
    end

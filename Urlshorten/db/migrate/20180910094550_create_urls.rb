@@ -3,6 +3,7 @@ class CreateUrls < ActiveRecord::Migration
     create_table :urls do |t|
       t.string :original
       t.string :random_id
+      t.string :count
 
       t.timestamps null: false
     end

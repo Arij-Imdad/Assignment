@@ -1,11 +1,14 @@
 class UrlsController < ApplicationController
+    
     def index
         @urls=Url.all
         
     end
-
-    def show
-        url = Url.where(:random_id=> params[:id]).first
+    
+    def show 
+        url = Url.where(:random_id=> params[:id]).first     
+        count = url.count.to_i + 1
+        Url.find(url.id).update_attributes(:count => count)
         if url
             redirect_to url.original
         else
@@ -22,7 +25,7 @@ class UrlsController < ApplicationController
     end
 
     def urls_params
-        params.require(:url).permit(:original, :random_id)
+        params.require(:url).permit(:original, :random_id, :count)
     end
 
 
@@ -33,6 +36,6 @@ class UrlsController < ApplicationController
         else
             render 'new'
         end
-
+        
     end
 end
